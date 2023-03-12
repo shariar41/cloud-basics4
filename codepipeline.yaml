@@ -58,7 +58,7 @@ Resources:
                 Owner: !Ref GitHubOwner
                 Repo: !Ref RepositoryName
                 Branch: !Ref BranchName
-                OAuthToken: '{{resolve:secretsmanager:github-oauth-token2:SecretString}}'               
+                OAuthToken: '{{resolve:secretsmanager:github-oauth-token:SecretString}}'               
                 PollForSourceChanges: false
               RunOrder: 1      
         - Name: Deploy
@@ -84,7 +84,7 @@ Resources:
     Properties:
       Authentication: GITHUB_HMAC
       AuthenticationConfiguration:
-        SecretToken: '{{resolve:secretsmanager:github-oauth-token2:SecretString}}'
+        SecretToken: '{{resolve:secretsmanager:github-oauth-token:SecretString}}'
       Filters:
         - 
           JsonPath: "$.ref"
